@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr Chuks Kitchen</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Island+Moments&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
+    <style>
+        ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        ul li a:hover {
+            color: rgb(255, 132, 0);
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .island-moments-regular {
+            font-family: "Island Moments", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* icon wrapper style to match provided design */
+        .icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 132, 0, 0.15);
+            color: rgb(255, 132, 0);
+            border-radius: 0.25rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Signin page styles */
+        .signin-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .signin-image-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signin-image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .signin-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 132, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .signin-overlay h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .signin-overlay p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .signin-form-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+        }
+
+        .signin-form {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .signin-form .form-control {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            background-color: #f9f9f9;
+        }
+
+        .signin-form .form-control:focus {
+            border-color: rgb(255, 132, 0);
+            background-color: #fff;
+            box-shadow: 0 0 0 0.2rem rgba(255, 132, 0, 0.15);
+        }
+
+        .signin-form label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+        }
+
+        .password-field-wrapper {
+            position: relative;
+        }
+
+        .btn-continue {
+            background-color: rgb(255, 132, 0);
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn-continue:hover {
+            background-color: rgba(255, 132, 0, 0.9);
+            color: white;
+        }
+
+        .btn-social {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-weight: 600;
+            color: #333;
+            background-color: #fff;
+            transition: all 0.3s;
+        }
+
+        .btn-social:hover {
+            background-color: #f5f5f5;
+            border-color: rgb(255, 132, 0);
+        }
+
+        .or-continue {
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+            margin: 20px 0;
+        }
+
+        .signin-form a {
+            color: rgb(17, 100, 255);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signin-form a:hover {
+            text-decoration: underline;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password a {
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .signin-overlay h1 {
+                font-size: 2rem;
+            }
+
+            .signin-image-section {
+                min-height: 250px;
+            }
+        }
+    </style>
+    <!-- Font Awesome 5 for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+</head>
+
+<body>
+
+    <main class="signin-container">
+        <!-- Left side with overlay -->
+        <div class="col-md-6 signin-image-section">
+            <img src="assets/images/welcome.png" alt="Food Image">
+            <div class="signin-overlay">
+                <h1>Chuks Kitchen</h1>
+                <p class="col-7 fw-semibold">Your journey to delicious, authentic Nigerian meals starts here. Sign up or
+                    log in to order your
+                    favorites today!</p>
+            </div>
+        </div>
+
+        <!-- Right side with form -->
+        <div class="col-md-6 signin-form-section">
+            <div class="signin-form">
+                <h2 class="island-moments-regular text-center"
+                    style="color: rgb(255, 132, 0); font-size: 1.8rem; margin-bottom: 10px;">Chuks Kitchen</h2>
+                <h3 class="text-center fw-bold mb-4" style="color: #333; font-size: 1.3rem;">Login your Account</h3>
+
+                <form>
+                    <div class="mb-3">
+                        <label for="emailPhone" class="form-label">Email or phone number</label>
+                        <div class="input-group">
+                            <span class="input-group-text" style="background-color: #f9f9f9; border: 1px solid #ddd;">
+                                <i class="fas fa-envelope" style="color: #999;"></i>
+                            </span>
+                            <input type="text" class="form-control" id="emailPhone" placeholder="name@gmail.com">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">phone number</label>
+                        <div class="input-group">
+                            <span class="input-group-text" style="background-color: #f9f9f9; border: 1px solid #ddd;">
+                                <i class="fas fa-phone" style="color: #999;"></i>
+                            </span>
+                            <input type="text" class="form-control" id="phone" placeholder="08012345678">
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text" style="background-color: #f9f9f9; border: 1px solid #ddd;">
+                                <i class="fas fa-lock" style="color: #999;"></i>
+                            </span>
+                            <input type="password" class="form-control" id="password" placeholder="••••••••">
+                            <i class="fas fa-eye password-toggle" onclick="togglePassword()"></i>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text" style="background-color: #f9f9f9; border: 1px solid #ddd;">
+                                <i class="fas fa-lock" style="color: #999;"></i>
+                            </span>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="••••••••">
+                            <i class="fas fa-eye password-toggle" onclick="togglePassword()"></i>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <input type="checkbox" name="agree" id="agree" class="col-1" style="width: 20px; height: 20px;">
+                        <label for="agree" class="form-label col">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a> </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-continue col-12 text-white mb-3">Continue</button>
+                </form>
+
+                <div class="or-continue">Or continue with</div>
+
+                <button class="btn btn-social col-12 mb-2">
+                    <i class="fab fa-google" style="color: #4285F4; margin-right: 8px;"></i> Continue with Google
+                </button>
+                <button class="btn btn-social col-12 mb-3">
+                    <i class="fab fa-apple" style="margin-right: 8px;"></i> Continue with Apple
+                </button>
+
+                <p class="text-center" style="color: #666; font-size: 0.9rem;">
+                    Already have an account? <a href="signin.html">Sign In</a>
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer class=" text-light py-5" style="background-color: rgb(155, 79, 43);">
+        <div class="row justify-content-evenly " style="margin-left: 5%; ">
+            <div class="col">
+                <h2 class="island-moments-regular fs-1" style="color: rgb(255, 132, 0);">Chuks Kitchen</h2>
+                <p class="fw-semibold col-8">
+                    Bringing the authentic flavors of Nigeria home cooking to your table, with passion and care.
+                </p>
+            </div>
+
+            <div class="col">
+                <h4 class="fw-semibold">Quick Links</h4>
+                <ul style="list-style-type: none; ;">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Explore</a></li>
+                    <li><a href="#">My Order</a></li>
+                    <li><a href="#">Amount</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <h4 class="fw-semibold">Contact Us</h4>
+                <ul style="list-style-type: none; ;">
+                    <li>+234 801 234 5678</li>
+                    <li>hello@chukskitchen.com</li>
+                    <li>123 Taste Blvd, Lagos, Nigeria</li>
+                </ul>
+            </div>
+
+            <div class="col">
+
+                <ul style="list-style-type: none; ;">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+
+            <div>
+                &copy; 2020, Lift Media. All rigth reserved
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.password-toggle');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+
+</html>
