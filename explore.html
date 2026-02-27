@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore - Chuks Kitchen</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Island+Moments&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        .island-moments-regular {
+            font-family: "Island Moments", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            color: rgb(255, 132, 0);
+            text-decoration: none;
+        }
+
+        nav a {
+            margin: 0 1.5rem;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: rgb(255, 132, 0);
+        }
+
+        .btn-login {
+            background-color: rgb(255, 132, 0);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn-login:hover {
+            background-color: #ff9500;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/welcome.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .container-main {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+        }
+
+        .menu-categories {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-categories h3 {
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .category-item {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            color: #333;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .category-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-item:hover {
+            background-color: #f0f0f0;
+            color: rgb(255, 132, 0);
+        }
+
+        .category-item.active {
+            background-color: rgba(255, 132, 0, 0.15);
+            color: rgb(255, 132, 0);
+            font-weight: 600;
+        }
+
+        /* Products Section */
+        .products-section {
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #f0f0f0;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            color: rgb(255, 132, 0);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .btn-add {
+            background-color: rgb(255, 132, 0);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add:hover {
+            background-color: #ff9500;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #6b3f35;
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        footer h5,
+        footer h6 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        footer .island-moments-regular {
+            color: rgb(255, 132, 0);
+            font-size: 1.5rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: rgb(255, 132, 0);
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        footer .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 132, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            background-color: rgb(255, 132, 0);
+            color: white;
+        }
+
+        footer .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav>
+        <div class=" row justify-content-between py-3">
+            <h1 class="island-moments-regular fs-2 col-2 ms-4" style="color: rgb(255, 132, 0);">Chuks Kitchen</h1>
+            <ul class="nav col-10 row justify-content-center align-items-bottom">
+                <li class="col"><a href="#" class="px-3 py-2 col btn tab">Home</a></li>
+                <li class="col"><a href="#" class="px-3 py-2 col btn tab">Explore</a></li>
+                <li class="col"><a href="#" class="px-3 py-2 col btn tab">My Order</a></li>
+                <li class="col"><a href="#" class="px-3 py-2 col btn tab">Account</a></li>
+                <li class="col"><a href="#" class="btn px-3 py-2 col text-white"
+                        style="background-color: rgb(255, 132, 0);">Logout</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Chuks Kitchen</h1>
+            <p>Chuks Kitchen Nigerian Home Cooking 4.9 (1.2k)</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container-main">
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="menu-categories">
+                    <h3>Menu Categories</h3>
+                    <a href="#popular" class="category-item active">Popular</a>
+                    <a href="#jollof" class="category-item">Jollof Rice & Entrees</a>
+                    <a href="#swallow" class="category-item">Swallow & Soups</a>
+                    <a href="#grills" class="category-item">Grills & sides</a>
+                    <a href="#beverages" class="category-item">Beverages</a>
+                    <a href="#desserts" class="category-item">Desserts</a>
+                </div>
+            </aside>
+
+            <!-- Products Section -->
+            <section class="products-section">
+                <!-- Popular Section -->
+                <div id="popular">
+                    <h2 class="section-title">Popular</h2>
+                    <div class="products-grid">
+                        <div class="product-card" onclick="window.location.href='food-details.html'">
+                            <img src="assets/images/Property 1=Default.png" alt="Jollof Rice & Fried Chicken"
+                                class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Jollof Rice & Fried Chicken</div>
+                                <div class="product-description">Our signature jollof rice, served with crispy fried
+                                    chicken and plantains.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦5,500</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="assets/images/image 8.png" alt="Eba & Egusi Soup" class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Eba & Egusi Soup (Goat Meat)</div>
+                                <div class="product-description">Hearty Egusi soup with tender goat meat, served with
+                                    soft Eba.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦6,500</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="assets/images/image 7.png" alt="Pounded Yam & Edikaikong" class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Pounded Yam & Edikaikong</div>
+                                <div class="product-description">Traditional pounded yam with rich, leafy Edikaikong
+                                    soup.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦3,000</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="assets/images/image 5.png" alt="Peppered Snail" class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Peppered Snail</div>
+                                <div class="product-description">Spicy and savory peppered snail, perfect as a side or
+                                    main.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦2,000</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="assets/images/image 6.png" alt="Grilled Tilapia Fish" class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Grilled Tilapia Fish</div>
+                                <div class="product-description">Whole grilled tilapia seasoned with our special spice
+                                    blend.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦4,500</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="assets/images/Property 1=Default.png" alt="Jollof Rice & Fried Chicken"
+                                class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Jollof Rice & Fried Chicken</div>
+                                <div class="product-description">Our signature jollof rice, served with crispy fried
+                                    chicken and plantains.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦5,500</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jollof Rice & Entrees Section -->
+                <div id="jollof">
+                    <h2 class="section-title">Jollof Rice & Entrees</h2>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <img src="assets/images/image 3.png" alt="Jollof Rice & Smoked Fish" class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Jollof Rice & Smoked Fish</div>
+                                <div class="product-description">Flavorful jollof rice served with perfectly smoked
+                                    fish.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦5,500</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="assets/images/Property 1=Default.png" alt="Party Jollof Rice (Veg)" class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Party Jollof Rice (Veg)</div>
+                                <div class="product-description">Vegetarian party jollof, full of rich flavors.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦2,800</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="assets/images/Property 1=Default.png" alt="Party Jollof Rice (Veg)" class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Party Jollof Rice (Veg)</div>
+                                <div class="product-description">Vegetarian party jollof, full of rich flavors.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦3,500</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Swallow & Soups Section -->
+                <div id="swallow">
+                    <h2 class="section-title">Swallow & Soups</h2>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <img src="assets/images/image 1.png" alt="Amala with Gbegiri & Ewedu" class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Amala with Gbegiri & Ewedu</div>
+                                <div class="product-description">Classic Amala served with Gbegiri (beans) and Ewedu
+                                    leafy soup.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦3,500</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="assets/images/image 2.png" alt="Fufu & Okra Soup (Fish)" class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Fufu & Okra Soup (Fish)</div>
+                                <div class="product-description">Light Fufu served with fresh okra soup and Tilapia
+                                    fish.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦3,500</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="assets/images/image 2.png" alt="Fufu & Okra Soup (Fish)" class="product-image">
+                            <div class="product-info">
+                                <div class="product-name">Fufu & Okra Soup (Fish)</div>
+                                <div class="product-description">Light Fufu served with fresh okra soup and Tilapia
+                                    fish.</div>
+                                <div class="product-footer">
+                                    <span class="product-price">₦3,500</span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+      <footer class=" text-light py-5" style="background-color: rgb(155, 79, 43);">
+        <div class="row justify-content-evenly " style="margin-left: 5%; ">
+            <div class="col">
+                <h2 class="island-moments-regular fs-1" style="color: rgb(255, 132, 0);">Chuks Kitchen</h2>
+                <p class="fw-semibold col-8">
+                    Bringing the authentic flavors of Nigeria home cooking to your table, with passion and care.
+                </p>
+            </div>
+
+
+            <div class="col">
+                <h4 class="fw-semibold">Quick Links</h4>
+                <ul style="list-style-type: none; ;">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Explore</a></li>
+                    <li><a href="#">My Order</a></li>
+                    <li><a href="#">Amount</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <h4 class="fw-semibold">Contact Us</h4>
+                <ul style="list-style-type: none; ;">
+                    <li>+234 801 234 5678</li>
+                    <li>hello@chukskitchen.com</li>
+                    <li>123 Taste Blvd, Lagos, Nigeria</li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <ul style="list-style-type: none; ;">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+
+            <div>
+                &copy; 2020, Lift Media. All rigth reserved
+            </div>
+        </div>
+
+    </footer>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
